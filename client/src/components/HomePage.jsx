@@ -8,10 +8,10 @@ const HomePage = ({ onVerifyClick }) => {
   useEffect(() => {
     // In a real scenario, this fetches from the local backend API
     // If the backend is running locally, it would be:
-    // fetch('http://localhost:3000/api/public/stats')
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000';
     
     // For standalone testing without backend, provide fallback data
-    fetch('http://localhost:3000/api/public/stats')
+    fetch(`${apiUrl}/api/public/stats`)
       .then(res => res.json())
       .then(data => {
         setStats(data);
